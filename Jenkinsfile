@@ -1,10 +1,9 @@
 pipeline {
   environment {
-    registry = "thedeepsyadav/devsecops-training"
-    registryCredential = "DockerHub"
+    registry = "saravanan1r/devsecops-training"
+    registryCredential = "DevsecopsTraining"
     dockerImage = ''
   }
-  
   agent any
   
   stages {
@@ -20,11 +19,12 @@ pipeline {
       steps {
         script {
           docker.withRegistry('', registryCredential ) {
-            docker.Image.push()
+            docker.Imagepush()
           }
         }
       }
     }
+       
     
     stage('Test Run') {
       steps {
