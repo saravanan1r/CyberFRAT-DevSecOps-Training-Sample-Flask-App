@@ -3,7 +3,7 @@ pipeline {
     registry = "saravanan1r/devsecops-training"
     registryCredential = "DevsecopsTraining"
     dockerImage = ''
-  
+  }
   agent any
   
   stages {
