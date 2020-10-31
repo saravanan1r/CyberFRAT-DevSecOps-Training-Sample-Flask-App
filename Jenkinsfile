@@ -7,13 +7,20 @@ pipeline {
   agent any
   
   stages {
-    stage('Check for Secrets'){
+     stage('Check for Secrets'){
       steps {
-        script {
-          sh "rm -rf trufflehog.json || true"
-          sh "docker run dxa4481/truffleHog:latest --json https://github.com/saravanan1r/CyberFRAT-DevSecOps-Training-Sample-Flask-App.git > trufflehog.json || true"
-          sh "cat trufflehog.json"
-        }
+        sh "rm -rf trufflehog.json || true"
+        sh "docker run dxa4481/trufflehog:latest --json https://github.com/deepshankaryadav/CyberFRAT-DevSecOps-Training-Sample-Flask-App.git > trufflehog.json || true"
+        sh "cat trufflehog.json"
+      }
+    }
+    
+    stage('SCA'){
+      steps {
+        sh "pip3 install safety"
+        sh "rm -rf safety.json || true"
+        sh "safety check -r requirements.txt --json > safety.json || true"
+        sh "cat safety.json"
       }
     }
     
