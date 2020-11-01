@@ -51,7 +51,7 @@ pipeline {
       }
     }
     
-    stage('Test Run') {
+    stage('Deploy Test Application') {
       steps {
         sh 'docker run -d $registry:$BUILD_NUMBER'
       }
