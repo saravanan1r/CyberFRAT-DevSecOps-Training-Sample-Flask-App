@@ -55,7 +55,7 @@ pipeline {
       steps {
         sh 'docker stop flaskr && docker rm flaskr || true'
         sh 'docker pull saravanan1r/devsecops-training:$BUILD_NUMBER'
-        sh 'docker run -p 5000:5000 --name flaskr saravanan1r/devsecops-trainingg:$BUILD_NUMBER'
+        sh 'docker run -p 5000:5000 --name flaskr saravanan1r/devsecops-training:$BUILD_NUMBER'
       }
     }
 
@@ -63,6 +63,6 @@ pipeline {
       steps{
         sh 'docker run -t owasp/zap2docker-stable zap-baseline.py -t 'http://build.dsy.sh:5000' || true'
       }
-     ) 
+    } 
   } 
 } 
