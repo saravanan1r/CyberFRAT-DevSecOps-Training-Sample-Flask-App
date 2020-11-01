@@ -27,7 +27,7 @@ pipeline {
     stage('SAST'){
       steps {
         sh "rm -rf bandit.json || true"
-        sh "bandit -r -f=json -o=bandit.json --exit-zero ."
+        sh "safety check -r requirements.txt --json > safety.json || true"
         sh "cat bandit.json"
       }
     }
